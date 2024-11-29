@@ -1,0 +1,11 @@
+===== Ticket de Venta =====
+Empleado: k
+Fecha: 2024-11-26 11:53:36
+===========================
+Detalles de la Venta:
+Codigo Producto Cantidad        Precio Unit.    Total          
+COCA            1               20.00           20.00          
+===========================
+Total de la venta: 20.00
+===========================
+Gracias por su compra!
