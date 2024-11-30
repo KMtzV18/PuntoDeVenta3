@@ -1,0 +1,12 @@
+===== Ticket de Venta =====
+Empleado: k
+Fecha: 2024-11-29 21:51:29
+===========================
+Detalles de la Venta:
+Codigo Producto Cantidad        Precio Unit.    Total          
+12345678        1               60.00           60.00          
+87654321        1               18.40           18.40          
+===========================
+Total de la venta: 78.40
+===========================
+Gracias por su compra!

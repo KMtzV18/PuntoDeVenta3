@@ -76,7 +76,7 @@ CREATE TABLE clientes (
 -- El stored procedure InsertarCliente pide como parametros un nombre,
 -- correo, telefono y nivel de lealtad para poder insertarlo
 -- ------------------------------------------------------
-show procedure status;
+
 DELIMITER //
 
 		CREATE PROCEDURE InsertarCliente(
@@ -88,7 +88,7 @@ DELIMITER //
 		BEGIN
 				INSERT INTO clientes (nombre, correo, telefono, fecha_registro, nivel_lealtad)
 				VALUES (p_nombre, p_correo, p_telefono, NOW(), p_nivel_lealtad);
-		END$$
+		END//
 
 DELIMITER ;
         -- ---------------------------------------------------
@@ -101,7 +101,7 @@ DELIMITER //
 		)
 		BEGIN
 				update clientes set activo = false where id_cliente = p_id;
-		END$$
+		END//
 
 DELIMITER ;
         -- ---------------------------------------------------------
@@ -119,7 +119,7 @@ DELIMITER //
 		BEGIN
                 update clientes set nombre = p_nombre, correo = p_correo, telefono = p_telefono,
                 fecha_registro = now(), nivel_lealtad = p_nivel_lealtad, activo = 1 where id_cliente = p_id;
-		END$$
+		END//
 
 DELIMITER ;
 drop procedure InsertarCliente;
@@ -199,6 +199,7 @@ BEGIN
 END //
 DELIMITER ;
 
+-- call insertar_ventas_aleatorias(200);
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -228,7 +229,7 @@ JOIN
 
 GROUP BY 
     v.id_venta, v.fecha, c.nombre, e.nombre_completo, v.total
-order by v.fecha asc; 
+order by v.fecha asc, v.id_venta asc; 
 -- ------------------------------------------------------------------
 -- ------------------------------------------------------------------
 -- Esta vista solo muestra el empleado junto con todo lo que ha vendido y cuantas ventas tuvo

@@ -76,6 +76,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnReporteVentas.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnReporteVentas.setText("Reporte de Ventas");
         btnReporteVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

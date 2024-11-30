@@ -34,11 +34,11 @@ public class ReporteDeVentasEmpleado extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(778, 530));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Reporte De Ventas Por Empleado");
 
+        miTabla.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         miTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -60,6 +60,7 @@ public class ReporteDeVentasEmpleado extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(miTabla);
 
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton1.setText("Atras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
