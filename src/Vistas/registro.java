@@ -203,7 +203,7 @@ public class registro extends javax.swing.JFrame {
             
             
             
-            if (dre.registrar(nombreC, usuario, password,mod)) {
+            if (dre.registrar(nombreC, usuario, password)) {
                 try {
                    
                     this.dispose();

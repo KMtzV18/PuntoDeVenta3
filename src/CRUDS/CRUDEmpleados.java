@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author kevmt
  */
 public class CRUDEmpleados {
+    
     public static void CargarTablaEmpleados(JTable tabla) throws ClassNotFoundException, SQLException, Exception {
     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
     modelo.setRowCount(0); 
@@ -154,6 +155,7 @@ public class CRUDEmpleados {
             //id = rs.getInt("id_empleado");
             r.llenar(rs.getString("nombre_completo"), rs.getString("usuario"), rs.getString("password"),rs.getBoolean("activo"),1);
             r.setVisible(true);
+            
             
          }
     

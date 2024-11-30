@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUDClientes {
     
+    
+    
     public static void CargarTablaClientes(JTable tabla) throws ClassNotFoundException, SQLException, Exception {
     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
     modelo.setRowCount(0); 
@@ -112,6 +114,7 @@ public class CRUDClientes {
         cstmt.setString(4, lealtad);
         
         cstmt.execute();
+        
         return true;
         }else{
             String sql = "{call ActualizarCliente(?, ?, ?, ?,?)}";
@@ -235,6 +238,11 @@ public static void Editar(int id)throws ClassNotFoundException, SQLException, Ex
             }
             amc.llenar(rs.getString("nombre"), rs.getString("correo"),rs.getString("telefono"),lealtad,rs.getBoolean("activo") );
             amc.setVisible(true);
+            
+            
+            String update = "update clientes set nombre = ?, correo = ?, telefono = ?, nivel_lealtad ? , activo ? where id_cliente = ?";
+            pstmt = conn.prepareStatement(update);
+            //pstmt.setString(1, );
             
          }
     

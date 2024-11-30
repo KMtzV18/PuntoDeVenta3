@@ -15,10 +15,15 @@ import java.util.logging.Logger;
  * @author kevmt
  */
 public class Empleados extends javax.swing.JFrame {
-
+        public static int mod ;
     /**
      * Creates new form Empleados
      */
+    
+    public static int getMod() {
+        return mod;
+    }
+
     public Empleados() throws SQLException, Exception {
         initComponents();
         CRUDEmpleados de = new CRUDEmpleados();
@@ -211,6 +216,7 @@ public class Empleados extends javax.swing.JFrame {
             registro r = new registro();
             CRUDEmpleados de = new CRUDEmpleados();
             de.Editar(txtMod.getText());
+            this.mod = 1;
             txtMod.setText("");
             txtMod.enable(false);
         } catch (Exception ex) {
@@ -240,6 +246,7 @@ public class Empleados extends javax.swing.JFrame {
             de.EliminarEmpleado(txtEliminar.getText());
             de.CargarTablaEmpleados(TablaEmp);
             txtEliminar.setText("");
+            txtEliminar.enable(false);
         } catch (SQLException ex) {
             Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {

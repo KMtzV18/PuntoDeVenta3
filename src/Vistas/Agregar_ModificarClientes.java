@@ -162,10 +162,17 @@ public class Agregar_ModificarClientes extends javax.swing.JFrame {
             String correo = txtCorreo.getText();
             String telefono = txtTelefono.getText();
             String lealtad = CBLealtad.getSelectedItem()+"";
-            System.out.println(nombre.isEmpty());
             
-            new CRUDClientes().insertar(nombre, correo, telefono, lealtad, new Clientes().getMod());
-            System.out.println(new Clientes().getMod());
+            
+            
+            if (new CRUDClientes().insertar(nombre, correo, telefono, lealtad, new Clientes().getMod())) {
+                txtNombre.setText("");
+                txtCorreo.setText("");
+                txtTelefono.setText("");
+                CBLealtad.setSelectedItem("Mostrador");
+                new Clientes().setMod(0);
+                this.dispose();
+            }
         } catch (Exception ex) {
             Logger.getLogger(Agregar_ModificarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }

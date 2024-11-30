@@ -18,6 +18,13 @@ import javax.swing.JOptionPane;
  * @author kevmt
  */
 public class CRUDRegistroEmpleados {
+    
+    public int mod() throws Exception{
+        Empleados e = new Empleados();
+        int m = e.getMod();
+        return m ;
+    }
+    
   // Método para obtener la conexión a la base de datos
     public static Connection obtenerConexion() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/PuntoDeVenta?serverTimezone=America/Mexico_City&zeroDateTimeBehavior=CONVERT_TO_NULL";
@@ -28,12 +35,13 @@ public class CRUDRegistroEmpleados {
         return DriverManager.getConnection(url, usuario, contraseña);
     }
     
-  public boolean registrar(String nombre, String usuario, String password,int mod) throws Exception {
+  public boolean registrar(String nombre, String usuario, String password) throws Exception {
       String user = new registro().getUser();
       if (usuario.length()<4) {
           JOptionPane.showMessageDialog(null, "La longitud del usuario debe ser de 8 caracteres minimo");
           return false;
       }
+      int mod = mod();
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -54,14 +62,7 @@ public class CRUDRegistroEmpleados {
         checkUserPstmt.setString(1, usuario);
         ResultSet checkUserRs = checkUserPstmt.executeQuery();
         if (mod == 1) {
-//            String user = "";
-//            String sql1 = "select usuario from empleados where usuario = ?";
-//            pstmt = conn.prepareStatement(sql1);
-//            pstmt.setString(1, usuario);
-//            rs = pstmt.executeQuery();
-//            if (rs.next()) {
-//                user = rs.getString("usuario");
-//            }
+
             String sql = "update empleados set nombre_completo = ? , usuario = ?, password = ?, activo = ? where usuario = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nombre);
