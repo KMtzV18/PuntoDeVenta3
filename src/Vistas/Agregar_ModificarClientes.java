@@ -150,11 +150,16 @@ public class Agregar_ModificarClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Este boton cierra la ventana
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    
+    // este boton obtiene la informacion y se las da a la clase CRUDClientes
+    // para usar el metodo de insertar
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         try {
             // TODO add your handling code here:

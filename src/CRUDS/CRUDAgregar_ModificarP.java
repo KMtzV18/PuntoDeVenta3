@@ -18,8 +18,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kevmt
  */
-public class CRUDAgregar_Modificar {
+public class CRUDAgregar_ModificarP {
     
+    // La funcion de este metodo es agregar o actualizar productos, pide como prametros
+    //toda la informacion del producto para insertarlo en la base de datos
     public static boolean Agregar(String codigo, String nombre, String descripcion, double precio, int stock, int stockminimo, double costo, boolean descontinuado) throws Exception {
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -105,20 +107,9 @@ public class CRUDAgregar_Modificar {
 }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //--------------------------PRODUCTOS----------------------------------------------------------------
+    // Este metodo es para cargar la tabla de la vista de productos
+    //donde podemos ver los productos que tenemos registrados, el parametro es la tabla donde vamos a ver los productos
     public static void CargarTabla(JTable tabla) throws ClassNotFoundException, SQLException, Exception{
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         //String codigo = (String)modelo.getValueAt(renglon, 0);
@@ -178,7 +169,8 @@ public class CRUDAgregar_Modificar {
         
     }
     
-    
+    //Este metodo carga la vista de insertar productos para ver su informacion y asi poder ver que vamos a modificar
+    //el parametro es el codigo del producto que sera visible en la tabla
     public static void Editar(String codigo)throws ClassNotFoundException, SQLException, Exception{
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -229,6 +221,9 @@ public class CRUDAgregar_Modificar {
         
     }
     
+    //Este metodo hace un borrado logico ya que solo marca como descontinuado
+    //el producto para que ya no se puedan hacer mas ventas de ese producto
+    //Como parametro pide el codigo del producto
     public static void EliminarProducto(String codigo){
         Connection conn = null;
         PreparedStatement pstmt = null;

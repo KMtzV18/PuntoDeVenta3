@@ -38,9 +38,6 @@ public class Agregar_Modificar extends javax.swing.JFrame {
     public Agregar_Modificar() {
         initComponents();
         txtCodigoP.requestFocusInWindow();
-//        if (!txtCodigoP.equals("")) {
-//            txtCodigoP.setEnabled(false);
-//        }
     }
 
     /**
@@ -68,7 +65,7 @@ public class Agregar_Modificar extends javax.swing.JFrame {
         txtCosto = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
         lblSioNo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,12 +122,12 @@ public class Agregar_Modificar extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CRUDS/cancelar2.png"))); // NOI18N
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CRUDS/cancelar2.png"))); // NOI18N
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAtrasActionPerformed(evt);
             }
         });
 
@@ -169,7 +166,7 @@ public class Agregar_Modificar extends javax.swing.JFrame {
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(btnAtras, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -225,7 +222,7 @@ public class Agregar_Modificar extends javax.swing.JFrame {
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSioNo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,16 +235,21 @@ public class Agregar_Modificar extends javax.swing.JFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+    
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    //Este metodo cierra la ventana
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         this.dispose();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
+    
+    //Este metodo obtiene la informacion de los textfield y se las pasa a la clase CRUDAgregar_ModificarP
+    //para asi usar el metodo de agregar
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        CRUDAgregar_Modificar dam = new CRUDAgregar_Modificar();
+        CRUDAgregar_ModificarP dam = new CRUDAgregar_ModificarP();
         String codigo = txtCodigoP.getText();
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
@@ -331,7 +333,7 @@ public class Agregar_Modificar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CBdescontinuado;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

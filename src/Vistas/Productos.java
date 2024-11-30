@@ -21,7 +21,7 @@ public class Productos extends javax.swing.JFrame {
      */
     public Productos() throws SQLException, Exception {
         initComponents();
-        CRUDAgregar_Modificar dam = new CRUDAgregar_Modificar();
+        CRUDAgregar_ModificarP dam = new CRUDAgregar_ModificarP();
         dam.CargarTabla(TablaProd);
     }
 
@@ -207,7 +207,7 @@ public class Productos extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
-            CRUDAgregar_Modificar dam = new CRUDAgregar_Modificar();
+            CRUDAgregar_ModificarP dam = new CRUDAgregar_ModificarP();
             dam.CargarTabla(TablaProd);
         } catch (SQLException ex) {
             Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
@@ -219,7 +219,7 @@ public class Productos extends javax.swing.JFrame {
     private void txtBuscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCodActionPerformed
         try {
             // TODO add your handling code here:
-            CRUDAgregar_Modificar dam = new CRUDAgregar_Modificar();
+            CRUDAgregar_ModificarP dam = new CRUDAgregar_ModificarP();
             dam.Editar(txtBuscarCod.getText().toUpperCase());
             txtBuscarCod.setText("");
             txtBuscarCod.enable(false);
@@ -240,7 +240,7 @@ public class Productos extends javax.swing.JFrame {
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         // TODO add your handling code here:
         try {
-            CRUDAgregar_Modificar dam = new CRUDAgregar_Modificar();
+            CRUDAgregar_ModificarP dam = new CRUDAgregar_ModificarP();
             dam.EliminarProducto(txtEliminar.getText().toUpperCase());
             dam.CargarTabla(TablaProd);
             txtEliminar.enable(false);

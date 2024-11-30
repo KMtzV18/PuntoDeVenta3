@@ -15,6 +15,8 @@ import java.sql.SQLException;
  * @author kevmt
  */
 class Empleado {
+    //Esta clase solo es para guardar datos del usuario que ingreso al punto de venta
+    //En la parte de abajo hay un metodo que permite obtener el id del empleado dando su usuario
     public static String usuario;
     public static int caja;
     public static int NumVenta;

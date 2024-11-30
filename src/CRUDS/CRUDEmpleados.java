@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUDEmpleados {
     
+    //Este metodo carga la tabla de empleados para ver su informacion
     public static void CargarTablaEmpleados(JTable tabla) throws ClassNotFoundException, SQLException, Exception {
     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
     modelo.setRowCount(0); 
@@ -79,11 +80,9 @@ public class CRUDEmpleados {
         }
     }
 }
-
     
-    
-    
-    
+    //Este metodo se encarga del borrado logico del empleado
+    //haciendo que el empleado no pueda iniciar sesion
     public static void EliminarEmpleado(String usuario){
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -124,6 +123,7 @@ public class CRUDEmpleados {
         
     }
     
+    //Este metodo carga la informacion del empleado para poder actualizarlo
     public static void Editar(String usuario)throws ClassNotFoundException, SQLException, Exception{
         Connection conn = null;
         PreparedStatement pstmt = null;

@@ -23,7 +23,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Reportes {
  
-
+    //Estos metodos consultan la base de datos para traer la informacion de las vistas creadas
+    // asi teniendo un mejor control de lo que queremos ver
+    
+    //Este metodo se encarga de cargar la tabla de reportes por mes
+    // teniendo como parametros la tabla y el numero de mes que se eligio
     public static void CargarReporteMes(JTable tabla,int mes) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.setRowCount(0); 
@@ -83,7 +87,8 @@ public class Reportes {
         }
     }
     
-    
+     //Este metodo se encarga de cargar la tabla de reportes por empleado
+    // teniendo como parametro la tabla 
     public static void CargarReporteEmpleado(JTable tabla) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.setRowCount(0); 
@@ -138,7 +143,8 @@ public class Reportes {
         }
     }
     
-    
+     //Este metodo se encarga de cargar la tabla de reportes por trimestre
+    // teniendo como parametro la tabla 
     public static void CargarReporteTrimestral(JTable tabla) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.setRowCount(0); 

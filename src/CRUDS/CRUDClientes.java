@@ -23,7 +23,8 @@ import javax.swing.table.DefaultTableModel;
 public class CRUDClientes {
     
     
-    
+    //Este metodo carga la tabla de clientes de la vista para poder ver la informacion de todos los clientes
+    //parametro: la tabla donde veremos la informacion
     public static void CargarTablaClientes(JTable tabla) throws ClassNotFoundException, SQLException, Exception {
     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
     modelo.setRowCount(0); 
@@ -74,6 +75,9 @@ public class CRUDClientes {
     }
 }
     
+    //Este metodo es para cargar la vista de insercion de clientes y pide la informacion de los clientes como parametros,
+    //tambien se encarga de identificar si es  una insercion o si es una actualizacion
+    //El metodo es booleano para poder saber si fue coorecto o no lo fue
     public boolean insertar(String nombre, String correo, String telefono,String lealtad,int act) throws Exception{
         Connection conn = null;
         
@@ -147,10 +151,8 @@ public class CRUDClientes {
         
     }
     
-    
-    
-    
-    
+    //Este metodo hace un borrado logico del cliente marcandolo como inactivo
+    //pide como parametro el id del cliente que estara visible en la tabla
     public boolean Eliminar(String id){
         Connection conn = null;
         
@@ -197,8 +199,9 @@ public class CRUDClientes {
         
     }
     
-    
-public static void Editar(int id)throws ClassNotFoundException, SQLException, Exception{
+    //Este metodo cargara la informacion del cliente y despues dejara todo en manos del metodo de insertar ya que este
+    //puede identificar si es una actualizacion, como parametro le damos el id del cliente
+    public static void Editar(int id)throws ClassNotFoundException, SQLException, Exception{
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;

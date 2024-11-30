@@ -29,8 +29,10 @@ import javax.swing.table.DefaultTableModel;
  * @author kevmt
  */
 public class CRUDPuntoDeVenta {
-    int renglon = 0;
     
+    // Este metodo nos regresa el numero de venta en la que va el empleado
+    //y asi mostrarla en el punto de venta
+    // como parametro le damos el usuario
     public static int NumVenta(String usuario) throws Exception{
         // Conectar a la base de datos
     Connection conn = null;
@@ -94,6 +96,9 @@ public class CRUDPuntoDeVenta {
     }
     
 }
+    
+    // Este metodo nos regresa el id del producto
+    // como parametro le damos el codigo delproducto y nos regresa un int
     public int idProducto(String codigo) throws ClassNotFoundException, SQLException{
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -121,6 +126,10 @@ public class CRUDPuntoDeVenta {
     
     
 }
+    
+    //Este metodo booleano nos dice si un producto esta descontinuado o no
+    // lo usamos para poder verificar si ese producto se podia vender o ya no
+    //como parametro le damos el codigo
     public boolean estadescontinuado(String codigo) throws ClassNotFoundException, SQLException{
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -150,6 +159,9 @@ public class CRUDPuntoDeVenta {
     
     return false;
 }
+    
+    //Este metodo no regresa el id de venta en la que vamos
+    //no requiere parametros y nos regresa un int
     public int idVenta() throws ClassNotFoundException, SQLException{
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -177,6 +189,9 @@ public class CRUDPuntoDeVenta {
     
     
 }
+    
+    //Este metodo nos dice cuanto stock queda de un producto
+    //como parametro le damos el codigo del producto y nos regresa la cantidad de stock que hay
     public int stock(String codigo) throws ClassNotFoundException, SQLException{
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -204,7 +219,9 @@ public class CRUDPuntoDeVenta {
     
     
 }
-
+    
+    //Este metodo agrega el producto a la tabla de la venta para hacer visible lo que el cliente comprara
+    //como parametro usamos la tabla, el codigo para acceder al producto y la cantidad que comprara
     public void añadirTabla(String codigo,JTable tabla,int cantidad) throws Exception{
         PuntoDeVenta pv = new PuntoDeVenta();
         boolean añadir = false;
@@ -236,11 +253,7 @@ public class CRUDPuntoDeVenta {
                 DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                 //modelo.setRowCount(0);
                 boolean descontinuado=false;
-//                if (rs.next()) {
-//                    if (rs.getInt("descontinuado")==1) {
-//                        descontinuado = true;
-//                    }else{descontinuado = false;}
-//                } 
+
                 
                 
                 if (rs.next()) {
@@ -305,6 +318,8 @@ public class CRUDPuntoDeVenta {
         
     }
     
+    //Este metodo cuenta el total de la compra sumando toda la columna del importe por producto
+    //como parametro le damos la tabla donde estan los productos
     public static double total(JTable tabla){
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         double total=0;
@@ -314,6 +329,8 @@ public class CRUDPuntoDeVenta {
         return total;
     }
     
+    //Este metodo nos da la cantidad de productos que comprara el cliente
+    //como parametro le damos la tabla
     public static int CantidadProductos(JTable tabla){
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         int cantProd=0;
@@ -324,65 +341,10 @@ public class CRUDPuntoDeVenta {
     }
     
     
-    
-    public static void CargarEditar(int renglon,JTable tabla) throws ClassNotFoundException, SQLException, Exception{
-        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-        String codigo = (String)modelo.getValueAt(renglon, 0);
-        Agregar_Modificar am = new Agregar_Modificar();
-        if (codigo == null) {
-            System.out.println("no tiene nada");
-        }
-        
-        
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        
-        try {
-        // Cargar el driver de MySQL
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        // URL de conexión con la base de datos
-        String url = "jdbc:mysql://localhost:3306/PuntoDeVenta?serverTimezone=America/Mexico_City&zeroDateTimeBehavior=CONVERT_TO_NULL";
-        String dbUser = "root";  // Usuario de la base de datos
-        String dbPassword = "root";  // Contraseña de la base de datos
-
-        // Establecer la conexión
-        conn = DriverManager.getConnection(url, dbUser, dbPassword);
-
-        // Consulta SQL para verificar el usuario y contraseña (hash almacenado)
-        String sql = "select codigo,nombre, descripcion,precio,stock,stockminimo,costo from productos where codigo = ?";
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, codigo);
-        
-        // Ejecutar la consulta
-        rs = pstmt.executeQuery();
-        
-         if (rs.next()) {
-            // Obtenemos el hash almacenado en la base de datos
-            //id = rs.getInt("id_empleado");
-//            am.llenar(codigo, rs.getString("nombre"), rs.getString("descripcion"),rs.getString("precio"), rs.getString("stock"), rs.getString("stockminimo"), rs.getString("costo"));
-//            am.setVisible(true);
-         }
-            
-         } catch (ClassNotFoundException | SQLException e) {
-        e.printStackTrace();
-        
-    } finally {
-        // Cerrar la conexión y liberar recursos
-        try {
-            if (rs != null) rs.close();
-            if (pstmt != null) pstmt.close();
-            if (conn != null) conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-        
-    }
-    
-    
     //----------------------------------------------------------------------------
+    
+    // Este metodo realiza las consultas necesarias para la transaccion y las añade a un arreglo
+    // como parametros le damos la informacion de la tabla de ventas
     public void realizarTransaccion(DefaultTableModel  tabla,int empleadoId, String fecha,double total,String user,int cliente) throws ClassNotFoundException, SQLException, Exception  {
           DefaultTableModel modelo = tabla;
          List<String> queries = new ArrayList<>();
@@ -421,14 +383,13 @@ public class CRUDPuntoDeVenta {
         }
 
         ImprimirTicket(modelo,user,fecha,total);
-        //Conexion conexion = new Conexion("tienda");
         ejecutarTransaccion(queries.toArray(new String[0]));
         
     }
     
-    
-    
-    
+    //Este metodo es el que ejecuta la transaccion
+    //ejecuta consulta por consula hasta acabar con todas, y si una consula
+    //por alguba razon no fuciona lanzara un rollback y ninguna consulra se realizara
     public void ejecutarTransaccion(String[] queries) throws ClassNotFoundException, SQLException {
         // Cargar el driver de MySQL
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -445,11 +406,9 @@ public class CRUDPuntoDeVenta {
             
             conn.setAutoCommit(false); 
             Statement stmt = conn.createStatement();
-            System.out.println(idVenta());
+            
             for (String query : queries) {
-                System.out.println(query);
                 stmt.executeUpdate(query);
-                System.out.println(query);
             }
             conn.commit();
             System.out.println("Transaccion ejecutada exitosamente.");
@@ -466,8 +425,9 @@ public class CRUDPuntoDeVenta {
             conn.close();
         }
     }
-    //----------------------------------------------------------------------------
     
+    // Este metodo escribe en notas el ticket de compra
+    //dando como informacion el importe total y los productos que se compraron
     public void ImprimirTicket(DefaultTableModel  tabla,String user, String fecha,double total) {
             LocalDateTime f = LocalDateTime.now();
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -516,6 +476,7 @@ public class CRUDPuntoDeVenta {
 
 }
     
+    //Este metodo es para nombrar cada ticket segun su numero
     private int contarTickets() {
         int n = 1;
         File archivoDelTicket = new File("ticket" + n + ".txt");
