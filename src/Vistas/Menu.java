@@ -125,7 +125,7 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Este boton abre la ventana del punto de venta y cierra el menu
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         try {
@@ -137,7 +137,7 @@ public class Menu extends javax.swing.JFrame {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    //Este boton abre la ventana de productos y cierra el menu
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         try {
             // TODO add your handling code here:
@@ -148,7 +148,7 @@ public class Menu extends javax.swing.JFrame {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnProductosActionPerformed
-
+    //Este boton abre la ventana de los empleados y cierra el menu
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         
         try {
@@ -161,7 +161,7 @@ public class Menu extends javax.swing.JFrame {
             this.dispose();
         
     }//GEN-LAST:event_btnEmpleadosActionPerformed
-
+    //Este boton que cierra el menu, pero antes pregunta por seguridad
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int opcion = JOptionPane.showConfirmDialog(null, "¿Deseas Salir?", "Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -172,7 +172,7 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //Este boton abre la ventana de los reportes de ventas y cierra el menu
     private void btnReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteVentasActionPerformed
         // TODO add your handling code here:
         MenuReportes mr = new MenuReportes();

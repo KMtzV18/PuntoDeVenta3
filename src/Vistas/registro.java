@@ -36,9 +36,6 @@ public class registro extends javax.swing.JFrame {
         this.CBactivo.setSelected(activo);
         this.mod = modificar;
         this.user = usuario;
-//        if (mod == 1) {
-//                txtusuario.enable(false);
-//            }
     }
     /**
      * Creates new form registro
@@ -185,7 +182,9 @@ public class registro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    //Este boton usa la informacion de los textfield para poder usar el metodo de
+    //registrar, si no hay nada notifica que debe llenarlos
+    //Si todo esta bien solo cierra la ventana
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
             CRUDRegistroEmpleados dre = new CRUDRegistroEmpleados();
@@ -196,16 +195,12 @@ public class registro extends javax.swing.JFrame {
             
             
             // Verificar si los campos están vacíos
-            if (usuario.isEmpty() || password.isEmpty()) {
+            if (nombreC.isEmpty() || usuario.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Por favor ingresa usuario y contraseña");
                 return;
             }
-            
-            
-            
             if (dre.registrar(nombreC, usuario, password)) {
                 try {
-                   
                     this.dispose();
                 } catch (Exception ex) {
                     Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);

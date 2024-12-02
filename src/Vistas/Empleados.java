@@ -44,7 +44,7 @@ public class Empleados extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnMod = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         txtMod = new javax.swing.JTextField();
         txtEliminar = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
@@ -97,11 +97,11 @@ public class Empleados extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton4.setText("Agregar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -119,6 +119,7 @@ public class Empleados extends javax.swing.JFrame {
             }
         });
 
+        btnActualizar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +146,7 @@ public class Empleados extends javax.swing.JFrame {
                                     .addComponent(txtMod)
                                     .addComponent(btnMod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4)))
+                                .addComponent(btnAgregar)))
                         .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -170,18 +171,18 @@ public class Empleados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMod)
                     .addComponent(btnEliminar)
-                    .addComponent(jButton4))
+                    .addComponent(btnAgregar))
                 .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Este boton hace modificable el textfield y pone el puntero en el para escribir
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         txtEliminar.enable(true);
         txtEliminar.requestFocus();
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    //Este boton cierra la ventana y pone visible el menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
@@ -192,14 +193,14 @@ public class Empleados extends javax.swing.JFrame {
             Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //Este boton hace modificable el textfield y pone el puntero en el para escribir
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
         // TODO add your handling code here:
          txtMod.enable(true);
          txtMod.requestFocus();
     }//GEN-LAST:event_btnModActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    //Este boton abre la ventana de registro de empleados para ingresar uno nuevo
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
             // TODO add your handling code here:
             registro r = new registro();
@@ -208,8 +209,8 @@ public class Empleados extends javax.swing.JFrame {
             Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+    }//GEN-LAST:event_btnAgregarActionPerformed
+    //Este es el ENTER que llama al metodo editar y toma el usuario del cliente para ello
     private void txtModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModActionPerformed
         try {
             // ENTER MOD
@@ -224,7 +225,7 @@ public class Empleados extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtModActionPerformed
-
+    //Este boton es para actualizar la tabla y poder ver los cambios
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             // TODO add your handling code here:
@@ -236,7 +237,9 @@ public class Empleados extends javax.swing.JFrame {
             Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
-
+    //Este es el ENTER que llama al metodo EliminarEmpleado y toma el usuario 
+    //del cliente para ello, despues vuelve a cargar la tabla
+    //para no tener que presionar el boton de actualizar
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         // TODO add your handling code here:
         try {
@@ -296,10 +299,10 @@ public class Empleados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaEmp;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMod;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtEliminar;
     private javax.swing.JTextField txtMod;

@@ -98,7 +98,7 @@ public class ReporteDeVentasTrimestral extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Este boton cierra la ventana y abre el menu de reportes
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         MenuReportes mr = new MenuReportes();

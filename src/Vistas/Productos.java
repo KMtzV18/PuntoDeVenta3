@@ -38,8 +38,8 @@ public class Productos extends javax.swing.JFrame {
         TablaProd = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         txtBuscarCod = new javax.swing.JTextField();
         txtEliminar = new javax.swing.JTextField();
@@ -81,19 +81,19 @@ public class Productos extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton3.setText("Modificar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton4.setText("Crear");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnCrear.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnCrearActionPerformed(evt);
             }
         });
 
@@ -134,9 +134,9 @@ public class Productos extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(btnEliminar)
                         .addGap(204, 204, 204)
-                        .addComponent(jButton3)
+                        .addComponent(btnModificar)
                         .addGap(162, 162, 162)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(txtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,9 +166,9 @@ public class Productos extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(btnModificar)
                     .addComponent(btnEliminar)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,22 +178,22 @@ public class Productos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    //Este boton hace modificable el textfield y pone el puntero en el
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         
             // TODO add your handling code here:
             txtBuscarCod.enable(true);
             txtBuscarCod.requestFocus();
             
         
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
+    //Este boton abre la ventana para crear productos
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
         Agregar_Modificar am = new Agregar_Modificar();
         am.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
+    }//GEN-LAST:event_btnCrearActionPerformed
+    //Este menu cierra la ventana y regresa al menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
@@ -204,7 +204,7 @@ public class Productos extends javax.swing.JFrame {
             Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //Este boton actualiza l atabla para ver los cambios
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             CRUDAgregar_ModificarP dam = new CRUDAgregar_ModificarP();
@@ -215,7 +215,8 @@ public class Productos extends javax.swing.JFrame {
             Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
-
+    //Este es el ENTER para usar el metodo de editar, toma el codigo del producto
+    // y lo usa en el metodo
     private void txtBuscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCodActionPerformed
         try {
             // TODO add your handling code here:
@@ -229,14 +230,15 @@ public class Productos extends javax.swing.JFrame {
             Logger.getLogger(Productos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtBuscarCodActionPerformed
-
+    //Este boton hace modificable el textfield y pone el puntero en el
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
        
             txtEliminar.enable(true);
             txtEliminar.requestFocus();
             
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    //Este es el ENTER para usar el metodo de eliminar, toma el codigo del producto
+    // y lo usa en el metodo
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         // TODO add your handling code here:
         try {
@@ -290,10 +292,10 @@ public class Productos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaProd;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtBuscarCod;

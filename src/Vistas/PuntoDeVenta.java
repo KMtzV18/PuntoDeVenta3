@@ -63,8 +63,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
     String fechaHoraFormateada = f.format(formato);
     Empleado emp = new Empleado();
     CRUDPuntoDeVenta pdv = new CRUDPuntoDeVenta();
-    //int veces = 1;
-    //String fecha = f.toString();
+    
     
     public PuntoDeVenta() throws Exception {
         initComponents();
@@ -106,7 +105,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         txtNumVenta = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         btnRealizarVenta = new javax.swing.JButton();
         lbCompraR = new javax.swing.JLabel();
         btnClientes = new javax.swing.JButton();
@@ -204,11 +203,11 @@ public class PuntoDeVenta extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton3.setText("Salir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -305,10 +304,9 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                                         .addGap(116, 116, 116))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(58, 58, 58)
-                                        .addComponent(jButton3)
+                                        .addComponent(btnSalir)
                                         .addGap(73, 73, 73)
-                                        .addComponent(btnClientes)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(btnClientes))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -320,7 +318,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
+                        .addComponent(btnSalir)
                         .addComponent(btnClientes))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -370,37 +368,29 @@ public class PuntoDeVenta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Este boton agrega el producto a latabla de ventas usando el codigo y el metodo de añadirTabla
+    //tambien usa los metodos de total y de cantidadProductos
     private void btnCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarritoActionPerformed
         // TODO add your handling code here:
-        //renglones.setTextmiTabla1.getSelectedRow()+"");
-        //int renglonSeleccionado =miTabla1.getSelectedRow();
-        
         String codigo = txtCodProd.getText().trim().toUpperCase();
-        System.out.println(codigo);
-        //veces++;
         int veces = Integer.parseInt(txtCantidad.getText());
-        //System.out.println("+++++++++ "+veces);
         try {
             dpv.añadirTabla(codigo, miTabla, veces);
             lbTotal.setText(dpv.total(miTabla)+"");
             lbCantProd.setText(dpv.CantidadProductos(miTabla)+"");
             txtCodProd.setText("");
             txtCodProd.requestFocus();
-            //txtCantidad.setText("");
         } catch (Exception ex) {
             Logger.getLogger(PuntoDeVenta.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
         }
 
     }//GEN-LAST:event_btnCarritoActionPerformed
-
+    //Este hace lo mismo que el boton carrito solo que este se puede usar solo con un ENTER
     private void txtCodProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdActionPerformed
         // ENTER
         String codigo = txtCodProd.getText().trim().toUpperCase();
-        //veces++;
         int veces = Integer.parseInt(txtCantidad.getText());
-        //System.out.println("+++++++++ "+veces);
         try {
             if (!dpv.estadescontinuado(codigo)) {
             dpv.añadirTabla(codigo, miTabla, veces);
@@ -416,17 +406,17 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                 txtCodProd.setText("");
                 txtCodProd.requestFocus();
             }
-//            lbTotal.setText("");
         } catch (Exception ex) {
             Logger.getLogger(PuntoDeVenta.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex);
         }
     }//GEN-LAST:event_txtCodProdActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    //Este boton cierra la ventana y abre el menu principal
+    //solo si comfirma
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         try {
             // TODO add your handling code here:
-            int opcion = JOptionPane.showConfirmDialog(null, "¿Deseas Salir?\n Se perdera la compra", "Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Deseas Salir?\n", "Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {
             Menu m = new Menu();
             m.setVisible(true);
@@ -435,8 +425,8 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(PuntoDeVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    }//GEN-LAST:event_btnSalirActionPerformed
+    //Este boton quita de la tabla el ultimo producto agregado
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) miTabla.getModel();
@@ -445,7 +435,8 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         lbTotal.setText(dpv.total(miTabla)+"");
         lbCantProd.setText(dpv.CantidadProductos(miTabla)+"");
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    //Este boton hace uso de las transacciones para verificar si todo esta bien
+    //si algo no esta bien no se hace la venta
     private void btnRealizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarVentaActionPerformed
         try {
             DefaultTableModel modelo = (DefaultTableModel) miTabla.getModel();
@@ -468,7 +459,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                         
                     }
                 });
-                timer.setRepeats(false); // Ejecutar solo una vez
+                timer.setRepeats(false);
                 timer.start();
                 txtNumVenta.setText(pdv.NumVenta(emp.getUsuario()+"")+"");
        
@@ -480,7 +471,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
             Logger.getLogger(PuntoDeVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRealizarVentaActionPerformed
-
+    //Este boton abre la ventana de clientes para ver sus codigos(IDs) y poder usarlos
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         try {
             // TODO add your handling code here:
@@ -540,7 +531,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnRealizarVenta;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

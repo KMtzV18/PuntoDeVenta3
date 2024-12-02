@@ -132,7 +132,9 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Este boton toda el texto de los textfield y usa el metodo conexion
+    //para verificar si es un empleado activo y correcto
+    //si no lo es manda mensaje de usuario incorrecto
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         String usuario = txtUsuario.getText();

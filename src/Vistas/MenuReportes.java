@@ -112,14 +112,14 @@ public class MenuReportes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Este boton abre la ventana de los reportes por mes y cierra el menu de reportes
     private void btnPorMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorMesActionPerformed
         // TODO add your handling code here:
         ReporteDeVentasMes rvm = new ReporteDeVentasMes();
         rvm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPorMesActionPerformed
-
+    //Este boton cierra esta ventana y abre el menu principal
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
@@ -130,14 +130,14 @@ public class MenuReportes extends javax.swing.JFrame {
             Logger.getLogger(MenuReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //Este boton abre la ventana de los reportes por empleado y cierra el menu de reportes
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ReporteDeVentasEmpleado rve = new ReporteDeVentasEmpleado();
         rve.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    //Este boton abre la ventana de los reportes por trimestre y cierra el menu de reportes
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         ReporteDeVentasTrimestral rvt = new ReporteDeVentasTrimestral();

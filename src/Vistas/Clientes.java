@@ -186,12 +186,13 @@ public class Clientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Este boton Hace modificable en textfield y pone el puntero en el para comenzar a escribir
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         txtEliminar.enable(true);
         txtEliminar.requestFocus();
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    //Esta accion es el ENTER, toma el id del cliente y lo utiliza para llamar el metodo eliminar
     private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
         try {
             // TODO add your handling code here:
@@ -206,7 +207,7 @@ public class Clientes extends javax.swing.JFrame {
             Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtEliminarActionPerformed
-
+    //Esta accion es el ENTER, toma el id del cliente y lo utiliza para llamar el metodo Editar
     private void txtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditarActionPerformed
         try {
             // TODO add your handling code here:
@@ -224,23 +225,24 @@ public class Clientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEditarActionPerformed
 
+    //Este boton Hace modificable en textfield y pone el puntero en el para comenzar a escribir
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         txtEditar.enable(true);
         txtEditar.requestFocus();
     }//GEN-LAST:event_btnModificarActionPerformed
-
+    //Este boton solo cierra la ventana
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
-
+    //Este boton hace visible la ventana para agregar clientes
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Agregar_ModificarClientes amc = new Agregar_ModificarClientes();
         amc.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    //Este boton llama el metodo de CargarTablaClientes para ver los cambios
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
