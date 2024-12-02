@@ -375,14 +375,14 @@ public class CRUDPuntoDeVenta {
                     queries.add(sale_details);
                 }else{
                     JOptionPane.showMessageDialog(null, "No cuentas con esa cantidad de producto", "Error en la compra", JOptionPane.ERROR_MESSAGE);
-
+                    return;
 
                 }
                 
             }
         }
 
-        ImprimirTicket(modelo,user,fecha,total);
+        ImprimirTicket(modelo,user,fecha,total,cliente);
         ejecutarTransaccion(queries.toArray(new String[0]));
         
     }
@@ -428,7 +428,7 @@ public class CRUDPuntoDeVenta {
     
     // Este metodo escribe en notas el ticket de compra
     //dando como informacion el importe total y los productos que se compraron
-    public void ImprimirTicket(DefaultTableModel  tabla,String user, String fecha,double total) {
+    public void ImprimirTicket(DefaultTableModel  tabla,String user, String fecha,double total,int cliente) {
             LocalDateTime f = LocalDateTime.now();
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String fechaHoraFormateada = f.format(formato);
@@ -438,7 +438,7 @@ public class CRUDPuntoDeVenta {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(Archivo))) {
                 writer.write("===== Ticket de Venta =====");
                 writer.newLine();
-                writer.write("Empleado: " + user);
+                writer.write("Empleado: " + user+"      Cliente: "+cliente);
                 writer.newLine();
                 writer.write("Fecha: " + fechaHoraFormateada);
                 writer.newLine();

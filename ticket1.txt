@@ -1,11 +1,11 @@
 ===== Ticket de Venta =====
 Empleado: k
-Fecha: 2024-11-29 17:17:08
+Fecha: 2024-12-01 23:53:58
 ===========================
 Detalles de la Venta:
 Codigo Producto Cantidad        Precio Unit.    Total          
-P               10              32.00           320.00         
+12121212        1               18.00           18.00          
 ===========================
-Total de la venta: 320.00
+Total de la venta: 18.00
 ===========================
 Gracias por su compra!

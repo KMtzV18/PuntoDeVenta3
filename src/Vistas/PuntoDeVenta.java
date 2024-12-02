@@ -222,6 +222,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
         lbCompraR.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lbCompraR.setText("Compra Realizada");
 
+        btnClientes.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnClientes.setText("Clientes");
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,8 +306,9 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(58, 58, 58)
                                         .addComponent(btnSalir)
-                                        .addGap(73, 73, 73)
-                                        .addComponent(btnClientes))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(70, 70, 70))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -319,7 +321,7 @@ public class PuntoDeVenta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSalir)
-                        .addComponent(btnClientes))
+                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
